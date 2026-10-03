@@ -1,675 +1,1133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BØSS ENTERPRISE</title>
+  <title>BØSS ENTERPRISE | Professional Services</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+  <meta name="description" content="BØSS ENTERPRISE - Professional services, creative solutions and quality results.">
+  <meta name="theme-color" content="#0b1220">
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f9ff;
-            color: #222;
-            transition: 0.3s;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        /* NAVIGATION */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #0077cc;
-            padding: 15px;
-            text-align: center;
-        }
+    :root {
+      --primary: #2563eb;
+      --secondary: #7c3aed;
+      --dark: #0b1220;
+      --dark2: #111827;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --light: #f5f7fb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 8px;
-            font-weight: bold;
-        }
+    body.dark {
+      --light: #0b1220;
+      --white: #111827;
+      --text: #f3f4f6;
+      --muted: #cbd5e1;
+      --card: #151f32;
+      --border: #263247;
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      transition: 0.3s;
+    }
 
-        .mode-btn {
-            margin-left: 10px;
-            padding: 7px 12px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11, 18, 32, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 3px 20px rgba(0,0,0,0.15);
+    }
 
-        /* HERO */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #dff3ff, #ffffff);
-            position: relative;
-            overflow: hidden;
-            animation: fadeUp 1s ease;
-        }
+    nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 20px;
-            border: 5px solid #0077cc;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-        }
+    .logo {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
 
-        .hero h1 {
-            font-size: 38px;
-            color: #0077cc;
-            margin-bottom: 15px;
-        }
+    .logo span {
+      color: #60a5fa;
+    }
 
-        .hero p {
-            max-width: 650px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
 
-        .btn {
-            display: inline-block;
-            background: #0077cc;
-            color: white;
-            padding: 12px 22px;
-            border-radius: 25px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
 
-        .btn:hover {
-            transform: scale(1.08);
-            background: #005fa3;
-        }
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
 
-        /* FLOATING CIRCLES */
-        .floating-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.25;
-            animation: float 6s infinite ease-in-out;
-        }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .circle1 {
-            width: 100px;
-            height: 100px;
-            background: #0077cc;
-            top: 10%;
-            left: 10%;
-        }
+    .theme-btn,
+    .menu-btn {
+      border: none;
+      background: #1f2937;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
 
-        .circle2 {
-            width: 150px;
-            height: 150px;
-            background: #66ccff;
-            bottom: 10%;
-            right: 10%;
-            animation-delay: 2s;
-        }
+    .menu-btn {
+      display: none;
+    }
 
-        .circle3 {
-            width: 70px;
-            height: 70px;
-            background: #00aaff;
-            top: 50%;
-            right: 20%;
-            animation-delay: 4s;
-        }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 20px 70px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(11,18,32,0.96), rgba(37,99,235,0.88)),
+        url("./boss-enterprise.jpg") center/cover;
+      color: white;
+    }
 
-        /* SECTIONS */
-        section {
-            padding: 70px 20px;
-            text-align: center;
-        }
+    .hero-container {
+      max-width: 1150px;
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
 
-        section h2 {
-            color: #0077cc;
-            margin-bottom: 30px;
-            font-size: 30px;
-        }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
 
-        .about {
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.8;
-        }
+    .hero h1 span {
+      color: #60a5fa;
+    }
 
-        /* SKILLS */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            max-width: 900px;
-            margin: auto;
-        }
+    .hero p {
+      font-size: 1.15rem;
+      color: #dbeafe;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
 
-        .skill {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-        .skill:hover {
-            transform: translateY(-8px);
-        }
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
 
-        /* PROJECTS */
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: auto;
-        }
+    .btn-primary {
+      background: white;
+      color: #1d4ed8;
+    }
 
-        .project {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
 
-        .project:hover {
-            transform: translateY(-8px);
-        }
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+    }
 
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+    .btn-outline:hover {
+      background: white;
+      color: #1d4ed8;
+    }
 
-        .project-content {
-            padding: 20px;
-        }
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
 
-        .project-content h3 {
-            color: #0077cc;
-            margin-bottom: 10px;
-        }
+    .hero-image img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 25px;
+      border: 5px solid rgba(255,255,255,0.7);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      animation: float 4s ease-in-out infinite;
+    }
 
-        /* SERVICES */
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
 
-        .service {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
+    /* GENERAL */
+    section {
+      padding: 90px 20px;
+    }
 
-        .service:hover {
-            transform: translateY(-8px);
-        }
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
 
-        .service h3 {
-            color: #0077cc;
-            margin-bottom: 10px;
-        }
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
 
-        /* CONTACT */
-        .contact-box {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+    .section-title h2 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
 
-        .contact-box p {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
+    .section-title p {
+      color: var(--muted);
+    }
 
-        .whatsapp {
-            background: #25D366;
-        }
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
 
-        .whatsapp:hover {
-            background: #1da851;
-        }
+    .about img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
 
-        /* FOOTER */
-        footer {
-            background: #0077cc;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+    .about h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
 
-        /* ANIMATIONS */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+    .about p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      transition: 0.3s;
+    }
 
-            50% {
-                transform: translateY(-25px);
-            }
-        }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
 
-        /* DARK MODE */
-        body.dark {
-            background: #121212;
-            color: #eeeeee;
-        }
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
 
-        body.dark .hero {
-            background: linear-gradient(135deg, #1a1a1a, #252525);
-        }
+    .card h3 {
+      margin-bottom: 10px;
+    }
 
-        body.dark .skill,
-        body.dark .project,
-        body.dark .service,
-        body.dark .contact-box {
-            background: #1f1f1f;
-            color: white;
-        }
+    .card p {
+      color: var(--muted);
+    }
 
-        body.dark section h2,
-        body.dark .project-content h3,
-        body.dark .service h3 {
-            color: #66ccff;
-        }
+    /* STATS */
+    .stats {
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      color: white;
+    }
 
-        /* MOBILE */
-        @media (max-width: 600px) {
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
 
-            nav a {
-                display: inline-block;
-                margin: 5px;
-                font-size: 14px;
-            }
+    .stat h3 {
+      font-size: 2.5rem;
+    }
 
-            .hero h1 {
-                font-size: 30px;
-            }
+    .stat p {
+      opacity: 0.9;
+    }
 
-            .profile-img {
-                width: 170px;
-                height: 170px;
-            }
-        }
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
 
-        @media (prefers-reduced-motion: reduce) {
+    .project {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
 
-            * {
-                scroll-behavior: auto;
-            }
+    .project:hover {
+      transform: translateY(-7px);
+    }
 
-            .hero,
-            .floating-circle {
-                animation: none;
-            }
-        }
-    </style>
+    .project img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+    }
+
+    /* WHY US */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 15px;
+      padding: 20px;
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .check {
+      font-size: 25px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .testimonial {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .testimonial p {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--dark);
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .contact-info div {
+      margin: 15px 0;
+    }
+
+    .contact-info a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    form {
+      background: #111827;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      background: #1f2937;
+      color: white;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    form button {
+      width: 100%;
+      background: #2563eb;
+      color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #050914;
+      color: #94a3b8;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 80px;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 28px;
+      z-index: 999;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
+    /* BACK TOP */
+    #topBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      font-size: 20px;
+    }
+
+    /* ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #0b1220;
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero-container,
+      .about,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .services-grid,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image img {
+        width: 240px;
+        height: 240px;
+      }
+
+      section {
+        padding: 70px 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
+<!-- HEADER -->
+<header>
+  <nav>
 
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+    <a href="#home" class="logo">
+      BØSS <span>ENTERPRISE</span>
+    </a>
 
-        <button class="mode-btn" onclick="toggleMode()">
-            🌙 / ☀️
-        </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-    </nav>
+    <div class="nav-buttons">
+      <button class="theme-btn" id="themeBtn">🌙</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+
+  </nav>
+</header>
 
 
-    <!-- HOME -->
-    <section class="hero" id="home">
+<!-- HERO -->
+<section class="hero" id="home">
 
-        <div class="floating-circle circle1"></div>
-        <div class="floating-circle circle2"></div>
-        <div class="floating-circle circle3"></div>
+  <div class="hero-container">
 
-        <!-- BØSS ENTERPRISE IMAGE -->
-        <img
-            src="./boss-enterprise.jpg"
-            alt="BØSS ENTERPRISE"
-            class="profile-img"
-        >
+    <div>
+      <p>WELCOME TO</p>
 
-        <h1 id="typing"></h1>
+      <h1>
+        BØSS <span>ENTERPRISE</span>
+      </h1>
 
-        <p>
-            Welcome to BØSS ENTERPRISE! We are passionate about
-            technology, web design, graphic design, and creativity.
-        </p>
+      <p>
+        Professional solutions, creative ideas and quality services
+        designed to help individuals and businesses achieve more.
+      </p>
 
-        <a href="#about" class="btn">
-            Learn More
+      <div class="hero-buttons">
+        <a href="#services" class="btn btn-primary">
+          Explore Services
         </a>
 
-    </section>
+        <a href="#contact" class="btn btn-outline">
+          Contact Us
+        </a>
+      </div>
+    </div>
 
+    <div class="hero-image">
+      <img src="./boss-enterprise.jpg" alt="BØSS ENTERPRISE">
+    </div>
 
-    <!-- ABOUT -->
-    <section id="about">
+  </div>
 
-        <h2>About BØSS ENTERPRISE</h2>
+</section>
 
-        <div class="about">
 
-            <p>
-                Welcome to BØSS ENTERPRISE. We are focused on creativity,
-                technology, web design, graphic design, and digital services.
-            </p>
+<!-- ABOUT -->
+<section id="about">
 
-            <br>
+  <div class="container about reveal">
 
-            <p>
-                Our goal is to create attractive and useful digital
-                experiences for individuals and businesses.
-            </p>
+    <div>
+      <img src="./boss-enterprise.jpg" alt="BØSS ENTERPRISE">
+    </div>
 
-        </div>
+    <div>
+      <h2>About BØSS ENTERPRISE</h2>
 
-    </section>
+      <p>
+        BØSS ENTERPRISE is focused on providing quality solutions,
+        professional services and creative ideas for our clients.
+      </p>
 
+      <p>
+        We believe in professionalism, reliability, creativity and
+        delivering results that our customers can be proud of.
+      </p>
 
-    <!-- SKILLS -->
-    <section id="skills">
+      <a href="#contact" class="btn btn-primary">
+        Work With Us
+      </a>
+    </div>
 
-        <h2>Our Skills</h2>
+  </div>
 
-        <div class="skills-container">
+</section>
 
-            <div class="skill">
-                <h3>HTML</h3>
-                <p>Creating the structure of websites.</p>
-            </div>
 
-            <div class="skill">
-                <h3>CSS</h3>
-                <p>Designing beautiful and responsive websites.</p>
-            </div>
+<!-- SERVICES -->
+<section id="services">
 
-            <div class="skill">
-                <h3>JavaScript</h3>
-                <p>Adding interaction and functionality.</p>
-            </div>
+  <div class="container">
 
-            <div class="skill">
-                <h3>Graphic Design</h3>
-                <p>Creating attractive visual designs.</p>
-            </div>
+    <div class="section-title reveal">
+      <h2>Our Services</h2>
+      <p>Professional solutions tailored to your needs.</p>
+    </div>
 
-        </div>
+    <div class="services-grid">
 
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section id="projects">
-
-        <h2>Our Projects</h2>
-
-        <div class="projects-container">
-
-            <!-- BØSS ENTERPRISE -->
-            <div class="project">
-
-                <img
-                    src="./boss-enterprise.jpg"
-                    alt="BØSS ENTERPRISE"
-                    class="project-image"
-                >
-
-                <div class="project-content">
-
-                    <h3>BØSS ENTERPRISE</h3>
-
-                    <p>
-                        A creative branding and graphic design project.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- GRAPHIC DESIGN -->
-            <div class="project">
-
-                <div class="project-content">
-
-                    <h3>Graphic Design</h3>
-
-                    <p>
-                        Creative graphics and visual designs.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- WEB DESIGN -->
-            <div class="project">
-
-                <div class="project-content">
-
-                    <h3>Web Design</h3>
-
-                    <p>
-                        Responsive websites created with HTML and CSS.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICES -->
-    <section id="services">
-
-        <h2>Our Services</h2>
-
-        <div class="services-container">
-
-            <div class="service">
-
-                <h3>Website Design</h3>
-
-                <p>
-                    We create simple and responsive websites.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>Graphic Design</h3>
-
-                <p>
-                    We create creative graphics and designs.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>Social Media Design</h3>
-
-                <p>
-                    Designs for social media posts and promotions.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>Web Development</h3>
-
-                <p>
-                    Building interactive websites using modern web
-                    technologies.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section id="contact">
-
-        <h2>Contact BØSS ENTERPRISE</h2>
-
-        <div class="contact-box">
-
-            <p>
-                📞 <strong>09134941225</strong>
-            </p>
-
-            <a
-                href="tel:09134941225"
-                class="btn"
-            >
-                📞 Call Us
-            </a>
-
-            <br><br>
-
-            <a
-                href="https://wa.me/2349134941225"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn whatsapp"
-            >
-                💬 WhatsApp Us
-            </a>
-
-            <br><br>
-
-            <button
-                class="btn"
-                onclick="sayHello()"
-            >
-                👋 Say Hello
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-
+      <div class="card reveal">
+        <div class="icon">💻</div>
+        <h3>Web Design</h3>
         <p>
-            © 2026 BØSS ENTERPRISE. All Rights Reserved.
+          Modern, responsive and user-friendly websites for individuals
+          and businesses.
         </p>
+      </div>
 
-    </footer>
+      <div class="card reveal">
+        <div class="icon">🎨</div>
+        <h3>Graphic Design</h3>
+        <p>
+          Creative designs that help businesses build a strong visual
+          identity.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">📱</div>
+        <h3>Digital Solutions</h3>
+        <p>
+          Practical digital solutions designed to improve your business
+          presence.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">🚀</div>
+        <h3>Business Promotion</h3>
+        <p>
+          Ideas and strategies to help your business reach more people.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">🖼️</div>
+        <h3>Branding</h3>
+        <p>
+          Professional branding concepts that make your business
+          memorable.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">⚙️</div>
+        <h3>Custom Solutions</h3>
+        <p>
+          Flexible solutions created around your specific requirements.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-    <!-- JAVASCRIPT -->
-    <script>
+<!-- STATS -->
+<section class="stats">
 
-        // TYPING ANIMATION
+  <div class="container stats-grid">
 
-        const text = "Welcome to BØSS ENTERPRISE";
+    <div class="stat">
+      <h3>20+</h3>
+      <p>Projects</p>
+    </div>
 
-        let index = 0;
+    <div class="stat">
+      <h3>15+</h3>
+      <p>Happy Clients</p>
+    </div>
 
-        function typeText() {
+    <div class="stat">
+      <h3>5+</h3>
+      <p>Services</p>
+    </div>
 
-            if (index < text.length) {
+    <div class="stat">
+      <h3>100%</h3>
+      <p>Commitment</p>
+    </div>
 
-                document.getElementById("typing").textContent +=
-                    text.charAt(index);
+  </div>
 
-                index++;
-
-                setTimeout(typeText, 100);
-            }
-        }
-
-        typeText();
-
-
-        // DARK MODE
-
-        function toggleMode() {
-
-            document.body.classList.toggle("dark");
-
-        }
+</section>
 
 
-        // SAY HELLO
+<!-- PROJECTS -->
+<section id="projects">
 
-        function sayHello() {
+  <div class="container">
 
-            alert("Hello! 👋 Thanks for visiting BØSS ENTERPRISE.");
+    <div class="section-title reveal">
+      <h2>Our Projects</h2>
+      <p>A look at some of our creative work.</p>
+    </div>
 
-        }
+    <div class="projects-grid">
 
-    </script>
+      <div class="project reveal">
+        <img src="./project1.png" alt="BØSS ENTERPRISE Project">
+        <div class="project-content">
+          <h3>Project One</h3>
+          <p>
+            A creative project developed with attention to quality
+            and presentation.
+          </p>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <img src="./boss-enterprise.jpg" alt="BØSS ENTERPRISE Branding">
+        <div class="project-content">
+          <h3>Brand Identity</h3>
+          <p>
+            Professional visual identity created for BØSS ENTERPRISE.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- WHY CHOOSE US -->
+<section>
+
+  <div class="container">
+
+    <div class="section-title reveal">
+      <h2>Why Choose Us?</h2>
+      <p>We focus on delivering value and quality.</p>
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-item reveal">
+        <div class="check">✅</div>
+        <div>
+          <h3>Professional Service</h3>
+          <p>We take every project seriously.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="check">⚡</div>
+        <div>
+          <h3>Fast Delivery</h3>
+          <p>We work efficiently to meet deadlines.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="check">💡</div>
+        <div>
+          <h3>Creative Ideas</h3>
+          <p>We bring fresh ideas to every project.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="check">🤝</div>
+        <div>
+          <h3>Customer Focus</h3>
+          <p>Your satisfaction matters to us.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section>
+
+  <div class="container">
+
+    <div class="section-title reveal">
+      <h2>What Our Clients Say</h2>
+      <p>Feedback from people we've worked with.</p>
+    </div>
+
+    <div class="testimonials">
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>
+          "Professional service and great attention to detail."
+        </p>
+        <strong>— Happy Client</strong>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>
+          "The work was delivered exactly as expected."
+        </p>
+        <strong>— Satisfied Client</strong>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>
+          "Creative, reliable and easy to work with."
+        </p>
+        <strong>— Valued Client</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+  <div class="container contact-grid">
+
+    <div>
+
+      <h2>Let's Work Together</h2>
+
+      <p>
+        Have a project or need our services?
+        Get in touch with BØSS ENTERPRISE today.
+      </p>
+
+      <div class="contact-info">
+
+        <div>
+          📞
+          <a href="tel:09134941225">
+            09134941225
+          </a>
+        </div>
+
+        <div>
+          💬
+          <a href="https://wa.me/2349134941225">
+            Chat with us on WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <form onsubmit="sendMessage(event)">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Your Name"
+        required
+      >
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Your Email"
+        required
+      >
+
+      <textarea
+        id="message"
+        placeholder="Tell us about your project..."
+        required
+      ></textarea>
+
+      <button class="btn" type="submit">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <p>
+    © <span id="year"></span>
+    <strong>BØSS ENTERPRISE</strong>.
+    All Rights Reserved.
+  </p>
+
+  <p>Professional • Creative • Reliable</p>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+<a
+  class="whatsapp"
+  href="https://wa.me/2349134941225"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  💬
+</a>
+
+
+<!-- BACK TO TOP -->
+<button id="topBtn">↑</button>
+
+
+<script>
+
+  /* MOBILE MENU */
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+
+
+  /* DARK MODE */
+
+  const themeBtn = document.getElementById("themeBtn");
+
+  themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      themeBtn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeBtn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+
+  });
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀️";
+  }
+
+
+  /* BACK TO TOP */
+
+  const topBtn = document.getElementById("topBtn");
+
+  window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
+    }
+
+  });
+
+  topBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+
+  /* SCROLL ANIMATIONS */
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  const revealOnScroll = () => {
+
+    reveals.forEach(element => {
+
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 80) {
+        element.classList.add("show");
+      }
+
+    });
+
+  };
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+
+
+  /* CONTACT FORM */
+
+  function sendMessage(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    const whatsappMessage =
+      "Hello BØSS ENTERPRISE.%0A%0A" +
+      "My name is " + encodeURIComponent(name) +
+      ".%0A%0A" +
+      encodeURIComponent(message);
+
+    window.open(
+      "https://wa.me/2349134941225?text=" + whatsappMessage,
+      "_blank"
+    );
+
+  }
+
+
+  /* YEAR */
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
 
 </body>
 </html>
