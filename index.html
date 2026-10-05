@@ -1,1131 +1,3283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>BØSS ENTERPRISE | Professional Services</title>
-
-  <meta name="description" content="BØSS ENTERPRISE - Professional services, creative solutions and quality results.">
-  <meta name="theme-color" content="#0b1220">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --primary: #2563eb;
-      --secondary: #7c3aed;
-      --dark: #0b1220;
-      --dark2: #111827;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --white: #ffffff;
-      --light: #f5f7fb;
-      --card: #ffffff;
-      --border: #e5e7eb;
-    }
-
-    body.dark {
-      --light: #0b1220;
-      --white: #111827;
-      --text: #f3f4f6;
-      --muted: #cbd5e1;
-      --card: #151f32;
-      --border: #263247;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.6;
-      transition: 0.3s;
-    }
-
-    /* HEADER */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(11, 18, 32, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 3px 20px rgba(0,0,0,0.15);
-    }
-
-    nav {
-      max-width: 1150px;
-      margin: auto;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      color: white;
-      font-size: 1.4rem;
-      font-weight: 900;
-      text-decoration: none;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: #60a5fa;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #60a5fa;
-    }
-
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .theme-btn,
-    .menu-btn {
-      border: none;
-      background: #1f2937;
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .menu-btn {
-      display: none;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding: 130px 20px 70px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(135deg, rgba(11,18,32,0.96), rgba(37,99,235,0.88)),
-        url("./boss-enterprise.jpg") center/cover;
-      color: white;
-    }
-
-    .hero-container {
-      max-width: 1150px;
-      width: 100%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: #60a5fa;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: #dbeafe;
-      max-width: 600px;
-      margin-bottom: 30px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: white;
-      color: #1d4ed8;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-outline {
-      border: 2px solid white;
-      color: white;
-    }
-
-    .btn-outline:hover {
-      background: white;
-      color: #1d4ed8;
-    }
-
-    .hero-image {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-image img {
-      width: 320px;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 25px;
-      border: 5px solid rgba(255,255,255,0.7);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    /* GENERAL */
-    section {
-      padding: 90px 20px;
-    }
-
-    .container {
-      max-width: 1150px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-title h2 {
-      font-size: 2.3rem;
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-    }
-
-    /* ABOUT */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .about img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    }
-
-    .about h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
-
-    .about p {
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
-
-    /* SERVICES */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    }
-
-    .icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    /* STATS */
-    .stats {
-      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
-      color: white;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      text-align: center;
-    }
-
-    .stat h3 {
-      font-size: 2.5rem;
-    }
-
-    .stat p {
-      opacity: 0.9;
-    }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-    }
-
-    .project {
-      background: var(--card);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-      transition: 0.3s;
-    }
-
-    .project:hover {
-      transform: translateY(-7px);
-    }
-
-    .project img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-
-    .project-content {
-      padding: 25px;
-    }
-
-    .project-content p {
-      color: var(--muted);
-    }
-
-    /* WHY US */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .why-item {
-      display: flex;
-      gap: 15px;
-      padding: 20px;
-      background: var(--card);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-
-    .check {
-      font-size: 25px;
-    }
-
-    /* TESTIMONIALS */
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .testimonial {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 15px;
-    }
-
-    .stars {
-      color: #f59e0b;
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .testimonial p {
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-
-    /* CONTACT */
-    .contact {
-      background: var(--dark);
-      color: white;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-    }
-
-    .contact p {
-      color: #cbd5e1;
-      margin-bottom: 20px;
-    }
-
-    .contact-info div {
-      margin: 15px 0;
-    }
-
-    .contact-info a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
-
-    form {
-      background: #111827;
-      padding: 30px;
-      border-radius: 15px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
-      border: 1px solid #374151;
-      border-radius: 8px;
-      background: #1f2937;
-      color: white;
-      outline: none;
-    }
-
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    form button {
-      width: 100%;
-      background: #2563eb;
-      color: white;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #050914;
-      color: #94a3b8;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    /* WHATSAPP */
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 80px;
-      width: 58px;
-      height: 58px;
-      background: #25D366;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 28px;
-      z-index: 999;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-    }
-
-    /* BACK TOP */
-    #topBtn {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 45px;
-      height: 45px;
-      border: none;
-      border-radius: 50%;
-      background: var(--primary);
-      color: white;
-      cursor: pointer;
-      display: none;
-      z-index: 999;
-      font-size: 20px;
-    }
-
-    /* ANIMATION */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 0.8s;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* MOBILE */
-    @media (max-width: 800px) {
-
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #0b1220;
-        flex-direction: column;
-        text-align: center;
-        padding: 25px;
-        display: none;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .hero-container,
-      .about,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        text-align: center;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-image {
-        order: -1;
-      }
-
-      .services-grid,
-      .testimonials {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .projects-grid,
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-image img {
-        width: 240px;
-        height: 240px;
-      }
-
-      section {
-        padding: 70px 18px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BØSS ENTERPRISE</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#050505;
+color:white;
+line-height:1.6;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+section{
+padding:80px 0;
+}
+
+.section-title{
+text-align:center;
+font-size:38px;
+color:#00ff88;
+margin-bottom:40px;
+text-shadow:0 0 15px rgba(0,255,136,.4);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+background:rgba(0,0,0,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(0,255,136,.2);
+}
+
+.navbar{
+width:92%;
+margin:auto;
+min-height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#00ff88;
+text-decoration:none;
+}
+
+.menu-btn{
+display:none;
+font-size:30px;
+color:#00ff88;
+cursor:pointer;
+}
+
+nav{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00ff88;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+min-height:100vh;
+padding:150px 20px 80px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+
+background:
+linear-gradient(
+rgba(0,0,0,.72),
+rgba(0,0,0,.92)
+),
+url("boss-enterprise.jpg");
+
+background-size:cover;
+background-position:center;
+
+animation:heroZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom{
+0%{background-size:100%;}
+100%{background-size:110%;}
+}
+
+.hero-content{
+max-width:900px;
+}
+
+.hero img{
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:50%;
+border:4px solid #00ff88;
+
+box-shadow:
+0 0 20px rgba(0,255,136,.4),
+0 0 45px rgba(0,255,136,.2);
+
+margin:0 auto 25px;
+
+animation:logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
+}
+
+.hero h1{
+font-size:55px;
+color:#00ff88;
+margin-bottom:10px;
+
+text-shadow:
+0 0 5px #00ff88,
+0 0 15px #00ff88,
+0 0 30px rgba(0,255,136,.7);
+
+animation:titleGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow{
+from{
+text-shadow:
+0 0 5px #00ff88,
+0 0 15px #00ff88;
+}
+to{
+text-shadow:
+0 0 10px #00ff88,
+0 0 30px #00ff88,
+0 0 50px rgba(0,255,136,.7);
+}
+}
+
+.hero .tagline{
+font-size:30px;
+font-weight:800;
+color:white;
+margin:10px auto 20px;
+
+text-shadow:
+0 0 8px rgba(255,255,255,.25),
+0 0 18px rgba(0,255,136,.2);
+
+animation:
+taglineIn 1.5s ease-out,
+taglineGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes taglineIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes taglineGlow{
+from{
+text-shadow:0 0 5px rgba(255,255,255,.2);
+}
+to{
+text-shadow:
+0 0 10px rgba(255,255,255,.4),
+0 0 20px rgba(0,255,136,.4);
+}
+}
+
+.hero .mall{
+font-size:26px;
+font-weight:bold;
+color:#00ff88;
+margin:10px auto 35px;
+padding:15px 25px;
+
+text-shadow:0 0 10px rgba(0,255,136,.4);
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+position:relative;
+overflow:hidden;
+margin:5px;
+}
+
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:rgba(255,255,255,.2);
+transform:skewX(-25deg);
+transition:.5s;
+}
+
+.btn:hover::before{
+left:100%;
+}
+
+.btn:hover{
+transform:translateY(-5px) scale(1.03);
+}
+
+.btn-primary{
+background:#00ff88;
+color:#000;
+
+box-shadow:
+0 0 15px rgba(0,255,136,.4);
+
+animation:shopPulse 2s ease-in-out infinite;
+}
+
+.btn-secondary{
+border:2px solid #00ff88;
+color:#00ff88;
+}
+
+@keyframes shopPulse{
+0%,100%{
+box-shadow:0 0 15px rgba(0,255,136,.4);
+}
+50%{
+box-shadow:0 0 30px rgba(0,255,136,.8);
+}
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+background:#0a0a0a;
+}
+
+.about-content{
+max-width:850px;
+margin:auto;
+text-align:center;
+font-size:18px;
+color:#ddd;
+}
+
+
+/* =========================
+   WHAT WE DO
+========================= */
+
+.what-we-do{
+background:#080808;
+}
+
+.what-intro{
+max-width:800px;
+margin:0 auto 40px;
+text-align:center;
+color:#ccc;
+font-size:18px;
+}
+
+.what-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.what-card{
+background:#111;
+padding:30px;
+border-radius:18px;
+text-align:center;
+border:1px solid rgba(0,255,136,.15);
+transition:.4s;
+}
+
+.what-card:hover{
+transform:translateY(-8px);
+border-color:#00ff88;
+box-shadow:0 10px 30px rgba(0,255,136,.12);
+}
+
+.what-icon{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.what-card h3{
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.what-card p{
+color:#bbb;
+}
+
+
+/* =========================
+   MISSION
+========================= */
+
+.mission{
+background:#050505;
+}
+
+.mission-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.mission-card{
+background:#101010;
+padding:30px;
+border-radius:18px;
+text-align:center;
+border:1px solid rgba(0,255,136,.15);
+transition:.4s;
+}
+
+.mission-card:hover{
+transform:translateY(-8px);
+border-color:#00ff88;
+box-shadow:0 10px 30px rgba(0,255,136,.12);
+}
+
+.mission-icon{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.mission-card h3{
+color:#00ff88;
+margin-bottom:12px;
+}
+
+.mission-card p{
+color:#bbb;
+}
+
+
+/* =========================
+   WHY US
+========================= */
+
+.why-us{
+background:#080808;
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.why-card{
+background:#111;
+padding:25px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(0,255,136,.15);
+}
+
+.why-card h3{
+color:#00ff88;
+margin:10px 0;
+}
+
+
+/* =========================
+   OUR TEAM
+========================= */
+
+.team{
+background:#050505;
+}
+
+.team-intro{
+max-width:750px;
+margin:-15px auto 40px;
+text-align:center;
+color:#bbb;
+font-size:17px;
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.team-card{
+background:#101010;
+padding:35px 25px;
+border-radius:20px;
+text-align:center;
+border:1px solid rgba(0,255,136,.15);
+transition:.4s;
+position:relative;
+overflow:hidden;
+}
+
+.team-card::before{
+content:"";
+position:absolute;
+width:120px;
+height:120px;
+background:rgba(0,255,136,.08);
+border-radius:50%;
+top:-60px;
+right:-60px;
+}
+
+.team-card:hover{
+transform:translateY(-10px);
+border-color:#00ff88;
+box-shadow:
+0 15px 35px rgba(0,255,136,.15);
+}
+
+.team-icon{
+width:100px;
+height:100px;
+margin:0 auto 20px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+background:#080808;
+border:3px solid #00ff88;
+box-shadow:0 0 20px rgba(0,255,136,.2);
+}
+
+.team-card h3{
+color:#00ff88;
+font-size:22px;
+margin-bottom:5px;
+}
+
+.team-role{
+color:white;
+font-weight:bold;
+margin-bottom:12px;
+}
+
+.team-card p{
+color:#aaa;
+font-size:15px;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+background:#080808;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.service-card{
+background:#111;
+padding:30px;
+border-radius:18px;
+border:1px solid rgba(0,255,136,.15);
+transition:.4s;
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+border-color:#00ff88;
+}
+
+.service-card h3{
+color:#00ff88;
+margin-bottom:12px;
+}
+
+.service-card p{
+color:#bbb;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+background:#050505;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+.project-card{
+background:#111;
+border-radius:18px;
+overflow:hidden;
+border:1px solid rgba(0,255,136,.15);
+}
+
+.project-card img{
+width:100%;
+height:280px;
+object-fit:cover;
+display:block;
+}
+
+.project-card-content{
+padding:25px;
+}
+
+.project-card h3{
+color:#00ff88;
+margin-bottom:10px;
+}
+
+
+/* =========================
+   FEATURED PRODUCTS
+========================= */
+
+.featured{
+background:#080808;
+}
+
+.featured-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.featured-card{
+background:#111;
+border-radius:18px;
+padding:15px;
+border:1px solid rgba(0,255,136,.15);
+text-align:center;
+transition:.4s;
+}
+
+.featured-card:hover{
+transform:translateY(-8px);
+border-color:#00ff88;
+}
+
+.featured-card img{
+width:100%;
+height:190px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.featured-card h3{
+color:#00ff88;
+margin:15px 0 5px;
+}
+
+.price{
+color:#00ff88;
+font-weight:bold;
+}
+
+
+/* =========================
+   SHOP
+========================= */
+
+.shop{
+background:#050505;
+}
+
+.shop-controls{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+justify-content:center;
+margin-bottom:30px;
+}
+
+.search-box{
+width:100%;
+max-width:500px;
+padding:15px 20px;
+border-radius:30px;
+border:1px solid #00ff88;
+background:#111;
+color:white;
+outline:none;
+font-size:16px;
+}
+
+.category-buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:30px;
+}
+
+.category-btn{
+padding:11px 20px;
+border-radius:25px;
+border:1px solid #00ff88;
+background:#111;
+color:#00ff88;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+.category-btn:hover,
+.category-btn.active{
+background:#00ff88;
+color:#000;
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.product-card{
+background:#111;
+border-radius:18px;
+padding:15px;
+border:1px solid rgba(0,255,136,.15);
+transition:.4s;
+overflow:hidden;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+border-color:#00ff88;
+box-shadow:0 10px 30px rgba(0,255,136,.1);
+}
+
+.product-card img{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.product-card h3{
+color:#00ff88;
+margin:15px 0 5px;
+}
+
+.product-card p{
+color:#bbb;
+font-size:14px;
+}
+
+.contact-price{
+color:#00ff88;
+font-weight:bold;
+margin:10px 0;
+}
+
+.product-buttons{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.product-buttons button{
+flex:1;
+min-width:120px;
+padding:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.details-btn{
+background:#00ff88;
+color:#000;
+}
+
+.add-btn{
+background:#222;
+border:1px solid #00ff88 !important;
+color:#00ff88;
+}
+
+
+/* =========================
+   QUICK ORDER
+========================= */
+
+.quick-order{
+background:#080808;
+}
+
+.quick-order-box{
+max-width:700px;
+margin:auto;
+background:#111;
+padding:30px;
+border-radius:20px;
+border:1px solid rgba(0,255,136,.2);
+}
+
+.quick-order-box input,
+.quick-order-box textarea{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border-radius:10px;
+border:1px solid #333;
+background:#080808;
+color:white;
+outline:none;
+}
+
+.quick-order-box input:focus,
+.quick-order-box textarea:focus{
+border-color:#00ff88;
+}
+
+.quick-order-box textarea{
+min-height:120px;
+resize:vertical;
+}
+
+.quick-order-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+background:#00ff88;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}
+
+
+/* =========================
+   OFFERS
+========================= */
+
+.offers{
+background:#050505;
+}
+
+.offer-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.offer-card{
+padding:30px 20px;
+border-radius:20px;
+background:linear-gradient(145deg,#101010,#171717);
+border:1px solid rgba(0,255,136,.2);
+text-align:center;
+animation:offerFloat 3s ease-in-out infinite alternate;
+}
+
+.offer-card:nth-child(2){
+animation-delay:.4s;
+}
+
+.offer-card:nth-child(3){
+animation-delay:.8s;
+}
+
+.offer-card:nth-child(4){
+animation-delay:1.2s;
+}
+
+@keyframes offerFloat{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-8px);
+}
+}
+
+.offer-card .offer-icon{
+font-size:45px;
+margin-bottom:12px;
+}
+
+.offer-card h3{
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.offer-card p{
+color:#bbb;
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+background:#080808;
+}
+
+.faq-container{
+max-width:850px;
+margin:auto;
+}
+
+.faq-item{
+background:#111;
+margin-bottom:12px;
+border-radius:12px;
+overflow:hidden;
+border:1px solid rgba(0,255,136,.12);
+}
+
+.faq-question{
+width:100%;
+padding:20px;
+background:none;
+border:none;
+color:white;
+font-size:17px;
+font-weight:bold;
+text-align:left;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.faq-question span{
+color:#00ff88;
+font-size:22px;
+}
+
+.faq-answer{
+display:none;
+padding:0 20px 20px;
+color:#bbb;
+}
+
+.faq-item.active .faq-answer{
+display:block;
+}
+
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews{
+background:#050505;
+}
+
+.review-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.review-card{
+background:#111;
+padding:25px;
+border-radius:18px;
+border:1px solid rgba(0,255,136,.15);
+transition:.3s;
+}
+
+.review-card:hover{
+transform:translateY(-6px);
+border-color:#00ff88;
+}
+
+.stars{
+color:#ffd700;
+font-size:18px;
+margin-bottom:12px;
+}
+
+.review-card h3{
+color:#00ff88;
+font-size:17px;
+margin-bottom:8px;
+}
+
+.review-card p{
+color:#bbb;
+font-size:14px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+background:#080808;
+}
+
+.contact-box{
+max-width:800px;
+margin:auto;
+text-align:center;
+background:#111;
+padding:40px;
+border-radius:20px;
+border:1px solid rgba(0,255,136,.2);
+}
+
+.contact-box h3{
+color:#00ff88;
+font-size:28px;
+margin-bottom:15px;
+}
+
+.contact-box p{
+color:#bbb;
+margin-bottom:20px;
+}
+
+.contact-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.whatsapp-btn{
+background:#25D366;
+color:white;
+}
+
+.phone-btn{
+background:#00ff88;
+color:#000;
+}
+
+
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+
+.whatsapp-float{
+position:fixed;
+right:20px;
+bottom:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#25D366;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:28px;
+z-index:900;
+box-shadow:0 5px 20px rgba(37,211,102,.4);
+animation:whatsappPulse 2s infinite;
+}
+
+@keyframes whatsappPulse{
+0%{
+box-shadow:0 0 0 0 rgba(37,211,102,.5);
+}
+70%{
+box-shadow:0 0 0 15px rgba(37,211,102,0);
+}
+100%{
+box-shadow:0 0 0 0 rgba(37,211,102,0);
+}
+}
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+#backTop{
+position:fixed;
+right:20px;
+bottom:90px;
+width:45px;
+height:45px;
+border:none;
+border-radius:50%;
+background:#00ff88;
+color:#000;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+display:none;
+z-index:900;
+}
+
+
+/* =========================
+   MODALS
+========================= */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:20px;
+}
+
+.modal-content{
+width:100%;
+max-width:600px;
+max-height:90vh;
+overflow-y:auto;
+background:#111;
+border:1px solid #00ff88;
+border-radius:20px;
+padding:30px;
+position:relative;
+}
+
+.close-modal{
+position:absolute;
+right:18px;
+top:12px;
+font-size:28px;
+color:#00ff88;
+cursor:pointer;
+}
+
+.modal-content img{
+width:100%;
+max-height:300px;
+object-fit:contain;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+.modal-content h2{
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.modal-content p{
+color:#bbb;
+margin-bottom:15px;
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-icon{
+position:fixed;
+right:20px;
+top:90px;
+z-index:800;
+width:55px;
+height:55px;
+border-radius:50%;
+background:#00ff88;
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(0,255,136,.3);
+}
+
+.cart-count{
+position:absolute;
+top:-5px;
+right:-5px;
+background:red;
+color:white;
+width:22px;
+height:22px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+font-weight:bold;
+}
+
+.cart-item{
+display:flex;
+gap:15px;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid #333;
+}
+
+.cart-item img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.cart-item-info{
+flex:1;
+}
+
+.cart-item-info h4{
+color:#00ff88;
+}
+
+.cart-controls{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:8px;
+}
+
+.cart-controls button{
+width:30px;
+height:30px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.qty-btn{
+background:#00ff88;
+color:#000;
+}
+
+.remove-btn{
+background:#ff4444;
+color:white;
+}
+
+.cart-actions{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.cart-actions button{
+flex:1;
+padding:13px;
+border:none;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.clear-cart{
+background:#222;
+color:#ff5555;
+border:1px solid #ff5555 !important;
+}
+
+.order-cart{
+background:#00ff88;
+color:#000;
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+.checkout-box{
+margin-top:20px;
+}
+
+.checkout-box h3{
+color:#00ff88;
+margin-bottom:15px;
+}
+
+.checkout-box input,
+.checkout-box textarea{
+width:100%;
+padding:13px;
+margin-bottom:12px;
+border-radius:10px;
+border:1px solid #333;
+background:#080808;
+color:white;
+}
+
+.checkout-box textarea{
+min-height:100px;
+resize:vertical;
+}
+
+.checkout-buttons{
+display:flex;
+gap:10px;
+}
+
+.checkout-buttons button{
+flex:1;
+padding:13px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.back-cart{
+background:#222;
+color:white;
+}
+
+.confirm-order{
+background:#25D366;
+color:white;
+}
+
+.success-box{
+display:none;
+text-align:center;
+padding:20px;
+}
+
+.success-icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.success-box h2{
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.success-box p{
+color:#bbb;
+margin-bottom:20px;
+}
+
+.success-box button{
+padding:12px 30px;
+border:none;
+border-radius:25px;
+background:#00ff88;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+background:#000;
+padding:35px 20px;
+text-align:center;
+border-top:1px solid rgba(0,255,136,.15);
+}
+
+footer p{
+color:#888;
+}
+
+footer strong{
+color:#00ff88;
+}
+
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+nav{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#050505;
+display:none;
+flex-direction:column;
+padding:20px;
+border-bottom:1px solid rgba(0,255,136,.2);
+}
+
+nav.active{
+display:flex;
+}
+
+.menu-btn{
+display:block;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero .tagline{
+font-size:22px;
+}
+
+.hero .mall{
+font-size:20px;
+}
+
+.what-grid,
+.mission-grid,
+.service-grid,
+.team-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.why-grid,
+.featured-grid,
+.offer-grid,
+.review-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+section{
+padding:60px 0;
+}
+
+.section-title{
+font-size:30px;
+}
+
+.hero{
+padding-top:130px;
+}
+
+.hero img{
+width:140px;
+height:140px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero .tagline{
+font-size:20px;
+}
+
+.hero .mall{
+font-size:17px;
+padding:10px;
+}
+
+.what-grid,
+.mission-grid,
+.why-grid,
+.service-grid,
+.project-grid,
+.featured-grid,
+.product-grid,
+.team-grid,
+.offer-grid,
+.review-grid{
+grid-template-columns:1fr;
+}
+
+.project-card img{
+height:230px;
+}
+
+.contact-box{
+padding:25px 18px;
+}
+
+.cart-icon{
+top:auto;
+bottom:90px;
+right:20px;
+}
+
+#backTop{
+bottom:155px;
+}
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+HEADER
+========================= -->
+
 <header>
-  <nav>
 
-    <a href="#home" class="logo">
-      BØSS <span>ENTERPRISE</span>
-    </a>
+<div class="navbar">
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+<a href="#home" class="logo">BØSS ENTERPRISE</a>
 
-    <div class="nav-buttons">
-      <button class="theme-btn" id="themeBtn">🌙</button>
-      <button class="menu-btn" id="menuBtn">☰</button>
-    </div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-  </nav>
+<nav id="navMenu">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#what-we-do">What We Do</a>
+<a href="#mission">Mission</a>
+<a href="#why-us">Why Us</a>
+<a href="#team">Team</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#featured">Featured</a>
+<a href="#shop">Shop</a>
+<a href="#quick-order">Order</a>
+<a href="#offers">Offers</a>
+<a href="#faq">FAQ</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+</div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- =========================
+HERO
+========================= -->
+
 <section class="hero" id="home">
 
-  <div class="hero-container">
+<div class="hero-content">
 
-    <div>
-      <p>WELCOME TO</p>
+<img src="boss-enterprise.jpg" alt="BØSS ENTERPRISE">
 
-      <h1>
-        BØSS <span>ENTERPRISE</span>
-      </h1>
+<h1>BØSS ENTERPRISE</h1>
 
-      <p>
-        Professional solutions, creative ideas and quality services
-        designed to help individuals and businesses achieve more.
-      </p>
+<p class="tagline">
+Web Design Professional | Phone Store
+</p>
 
-      <div class="hero-buttons">
-        <a href="#services" class="btn btn-primary">
-          Explore Services
-        </a>
+<p class="mall">
+In Partnership with Kelvin Faleye’s Mall
+</p>
 
-        <a href="#contact" class="btn btn-outline">
-          Contact Us
-        </a>
-      </div>
-    </div>
+<a href="#shop" class="btn btn-primary">
+🛒 Visit Our Shop
+</a>
 
-    <div class="hero-image">
-      <img src="./boss-enterprise.jpg" alt="BØSS ENTERPRISE">
-    </div>
+<a href="#contact" class="btn btn-secondary">
+📞 Contact Us
+</a>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- ABOUT -->
-<section id="about">
+<!-- =========================
+ABOUT
+========================= -->
 
-  <div class="container about reveal">
+<section class="about reveal" id="about">
 
-    <div>
-      <img src="./boss-enterprise.jpg" alt="BØSS ENTERPRISE">
-    </div>
+<div class="container">
 
-    <div>
-      <h2>About BØSS ENTERPRISE</h2>
+<h2 class="section-title">👑 About BØSS ENTERPRISE</h2>
 
-      <p>
-        BØSS ENTERPRISE is focused on providing quality solutions,
-        professional services and creative ideas for our clients.
-      </p>
+<div class="about-content">
 
-      <p>
-        We believe in professionalism, reliability, creativity and
-        delivering results that our customers can be proud of.
-      </p>
+<p>
+BØSS ENTERPRISE is a modern technology and digital solutions brand
+focused on web design, graphic design, smartphones, gaming products,
+business promotion and creative digital services.
+</p>
 
-      <a href="#contact" class="btn btn-primary">
-        Work With Us
-      </a>
-    </div>
+<br>
 
-  </div>
+<p>
+Our goal is to provide quality products and reliable services while
+helping individuals and businesses use technology to grow and succeed.
+</p>
 
-</section>
+</div>
 
-
-<!-- SERVICES -->
-<section id="services">
-
-  <div class="container">
-
-    <div class="section-title reveal">
-      <h2>Our Services</h2>
-      <p>Professional solutions tailored to your needs.</p>
-    </div>
-
-    <div class="services-grid">
-
-      <div class="card reveal">
-        <div class="icon">💻</div>
-        <h3>Web Design</h3>
-        <p>
-          Modern, responsive and user-friendly websites for individuals
-          and businesses.
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon">🎨</div>
-        <h3>Graphic Design</h3>
-        <p>
-          Creative designs that help businesses build a strong visual
-          identity.
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon">📱</div>
-        <h3>Digital Solutions</h3>
-        <p>
-          Practical digital solutions designed to improve your business
-          presence.
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon">🚀</div>
-        <h3>Business Promotion</h3>
-        <p>
-          Ideas and strategies to help your business reach more people.
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon">🖼️</div>
-        <h3>Branding</h3>
-        <p>
-          Professional branding concepts that make your business
-          memorable.
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon">⚙️</div>
-        <h3>Custom Solutions</h3>
-        <p>
-          Flexible solutions created around your specific requirements.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- STATS -->
-<section class="stats">
+<!-- =========================
+WHAT WE DO
+========================= -->
 
-  <div class="container stats-grid">
+<section class="what-we-do reveal" id="what-we-do">
 
-    <div class="stat">
-      <h3>20+</h3>
-      <p>Projects</p>
-    </div>
+<div class="container">
 
-    <div class="stat">
-      <h3>15+</h3>
-      <p>Happy Clients</p>
-    </div>
+<h2 class="section-title">💼 What We Do</h2>
 
-    <div class="stat">
-      <h3>5+</h3>
-      <p>Services</p>
-    </div>
+<p class="what-intro">
+BØSS ENTERPRISE combines technology, creativity and digital services
+to help individuals and businesses achieve their goals.
+</p>
 
-    <div class="stat">
-      <h3>100%</h3>
-      <p>Commitment</p>
-    </div>
+<div class="what-grid">
 
-  </div>
+<div class="what-card">
+<div class="what-icon">💻</div>
+<h3>Web Design</h3>
+<p>
+We create modern, responsive and professional websites for businesses and individuals.
+</p>
+</div>
 
-</section>
+<div class="what-card">
+<div class="what-icon">🎨</div>
+<h3>Graphic Design</h3>
+<p>
+We create attractive graphics, flyers, banners and other digital designs.
+</p>
+</div>
 
+<div class="what-card">
+<div class="what-icon">📱</div>
+<h3>Phone Store</h3>
+<p>
+We provide smartphones and other technology products. Contact us for current prices.
+</p>
+</div>
 
-<!-- PROJECTS -->
-<section id="projects">
+<div class="what-card">
+<div class="what-icon">🎮</div>
+<h3>Gaming</h3>
+<p>
+We offer gaming products such as PS4, PS5 and other available gaming items.
+</p>
+</div>
 
-  <div class="container">
+<div class="what-card">
+<div class="what-icon">📢</div>
+<h3>Business Promotion</h3>
+<p>
+We help businesses promote their products and services through digital solutions.
+</p>
+</div>
 
-    <div class="section-title reveal">
-      <h2>Our Projects</h2>
-      <p>A look at some of our creative work.</p>
-    </div>
+<div class="what-card">
+<div class="what-icon">⚙️</div>
+<h3>Digital Solutions</h3>
+<p>
+We provide practical technology solutions designed around the needs of our customers.
+</p>
+</div>
 
-    <div class="projects-grid">
+</div>
 
-      <div class="project reveal">
-        <img src="./project1.png" alt="BØSS ENTERPRISE Project">
-        <div class="project-content">
-          <h3>Project One</h3>
-          <p>
-            A creative project developed with attention to quality
-            and presentation.
-          </p>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <img src="./boss-enterprise.jpg" alt="BØSS ENTERPRISE Branding">
-        <div class="project-content">
-          <h3>Brand Identity</h3>
-          <p>
-            Professional visual identity created for BØSS ENTERPRISE.
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- WHY CHOOSE US -->
-<section>
-
-  <div class="container">
-
-    <div class="section-title reveal">
-      <h2>Why Choose Us?</h2>
-      <p>We focus on delivering value and quality.</p>
-    </div>
-
-    <div class="why-grid">
-
-      <div class="why-item reveal">
-        <div class="check">✅</div>
-        <div>
-          <h3>Professional Service</h3>
-          <p>We take every project seriously.</p>
-        </div>
-      </div>
-
-      <div class="why-item reveal">
-        <div class="check">⚡</div>
-        <div>
-          <h3>Fast Delivery</h3>
-          <p>We work efficiently to meet deadlines.</p>
-        </div>
-      </div>
-
-      <div class="why-item reveal">
-        <div class="check">💡</div>
-        <div>
-          <h3>Creative Ideas</h3>
-          <p>We bring fresh ideas to every project.</p>
-        </div>
-      </div>
-
-      <div class="why-item reveal">
-        <div class="check">🤝</div>
-        <div>
-          <h3>Customer Focus</h3>
-          <p>Your satisfaction matters to us.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- TESTIMONIALS -->
-<section>
+<!-- =========================
+MISSION & VISION
+========================= -->
 
-  <div class="container">
+<section class="mission reveal" id="mission">
 
-    <div class="section-title reveal">
-      <h2>What Our Clients Say</h2>
-      <p>Feedback from people we've worked with.</p>
-    </div>
+<div class="container">
 
-    <div class="testimonials">
+<h2 class="section-title">🎯 Our Mission & Vision</h2>
 
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <p>
-          "Professional service and great attention to detail."
-        </p>
-        <strong>— Happy Client</strong>
-      </div>
+<div class="mission-grid">
 
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <p>
-          "The work was delivered exactly as expected."
-        </p>
-        <strong>— Satisfied Client</strong>
-      </div>
+<div class="mission-card">
 
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <p>
-          "Creative, reliable and easy to work with."
-        </p>
-        <strong>— Valued Client</strong>
-      </div>
+<div class="mission-icon">🎯</div>
 
-    </div>
+<h3>Our Mission</h3>
 
-  </div>
+<p>
+To provide reliable digital services, quality technology products
+and creative solutions that help our customers grow and succeed.
+</p>
 
-</section>
+</div>
 
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<div class="mission-card">
 
-  <div class="container contact-grid">
+<div class="mission-icon">👁️</div>
 
-    <div>
+<h3>Our Vision</h3>
 
-      <h2>Let's Work Together</h2>
+<p>
+To become a trusted and respected technology and digital solutions
+brand known for innovation, quality and excellent customer service.
+</p>
 
-      <p>
-        Have a project or need our services?
-        Get in touch with BØSS ENTERPRISE today.
-      </p>
-
-      <div class="contact-info">
-
-        <div>
-          📞
-          <a href="tel:09134941225">
-            09134941225
-          </a>
-        </div>
-
-        <div>
-          💬
-          <a href="https://wa.me/2349134941225">
-            Chat with us on WhatsApp
-          </a>
-        </div>
-
-      </div>
-
-    </div>
+</div>
 
 
-    <form onsubmit="sendMessage(event)">
+<div class="mission-card">
 
-      <input
-        type="text"
-        id="name"
-        placeholder="Your Name"
-        required
-      >
+<div class="mission-icon">💡</div>
 
-      <input
-        type="email"
-        id="email"
-        placeholder="Your Email"
-        required
-      >
+<h3>Our Goal</h3>
 
-      <textarea
-        id="message"
-        placeholder="Tell us about your project..."
-        required
-      ></textarea>
+<p>
+To combine technology, creativity and excellent service to create
+lasting value for individuals, businesses and our community.
+</p>
 
-      <button class="btn" type="submit">
-        Send Message
-      </button>
+</div>
 
-    </form>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+WHY US
+========================= -->
+
+<section class="why-us reveal" id="why-us">
+
+<div class="container">
+
+<h2 class="section-title">⭐ Why Choose BØSS ENTERPRISE?</h2>
+
+<div class="why-grid">
+
+<div class="why-card">
+<div>⚡</div>
+<h3>Fast Service</h3>
+<p>We value your time and work efficiently.</p>
+</div>
+
+<div class="why-card">
+<div>💎</div>
+<h3>Quality</h3>
+<p>We focus on providing quality products and services.</p>
+</div>
+
+<div class="why-card">
+<div>🤝</div>
+<h3>Trust</h3>
+<p>We believe in honest and reliable customer service.</p>
+</div>
+
+<div class="why-card">
+<div>🚀</div>
+<h3>Innovation</h3>
+<p>We use modern technology and creative ideas.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+OUR TEAM
+========================= -->
+
+<section class="team reveal" id="team">
+
+<div class="container">
+
+<h2 class="section-title">👥 Our Team</h2>
+
+<p class="team-intro">
+Meet the people behind BØSS ENTERPRISE, working together to provide
+quality digital services, technology products and excellent customer service.
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+
+<div class="team-icon">👑</div>
+
+<h3>BØSS ENTERPRISE</h3>
+
+<p class="team-role">Founder & Management</p>
+
+<p>
+Leading the vision, growth and direction of BØSS ENTERPRISE.
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="team-icon">💻</div>
+
+<h3>Web Design Team</h3>
+
+<p class="team-role">Digital Development</p>
+
+<p>
+Creating modern, responsive and professional websites for customers.
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="team-icon">🎨</div>
+
+<h3>Creative Team</h3>
+
+<p class="team-role">Graphics & Branding</p>
+
+<p>
+Developing creative designs, promotional materials and branding solutions.
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="team-icon">📱</div>
+
+<h3>Sales Team</h3>
+
+<p class="team-role">Phones & Technology</p>
+
+<p>
+Helping customers find suitable smartphones and technology products.
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="team-icon">🎮</div>
+
+<h3>Gaming Team</h3>
+
+<p class="team-role">Gaming Products</p>
+
+<p>
+Providing gaming products and helping customers with their gaming needs.
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<div class="team-icon">🤝</div>
+
+<h3>Customer Support</h3>
+
+<p class="team-role">Customer Service</p>
+
+<p>
+Supporting customers and helping ensure a smooth experience from start to finish.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+SERVICES
+========================= -->
+
+<section class="services reveal" id="services">
+
+<div class="container">
+
+<h2 class="section-title">🛠️ Our Services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<h3>💻 Web Design</h3>
+<p>
+Modern and responsive websites for businesses, organizations and individuals.
+</p>
+</div>
+
+<div class="service-card">
+<h3>🎨 Graphic Design</h3>
+<p>
+Professional flyers, banners, advertisements and digital graphics.
+</p>
+</div>
+
+<div class="service-card">
+<h3>📱 Digital Solutions</h3>
+<p>
+Practical technology solutions designed around your needs.
+</p>
+</div>
+
+<div class="service-card">
+<h3>📢 Business Promotion</h3>
+<p>
+Digital solutions to help businesses reach more customers.
+</p>
+</div>
+
+<div class="service-card">
+<h3>🏷️ Branding</h3>
+<p>
+Creative branding solutions that help businesses stand out.
+</p>
+</div>
+
+<div class="service-card">
+<h3>⚙️ Custom Solutions</h3>
+<p>
+Technology solutions created according to your requirements.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+PROJECTS
+========================= -->
+
+<section class="projects reveal" id="projects">
+
+<div class="container">
+
+<h2 class="section-title">🚀 Our Projects</h2>
+
+<div class="project-grid">
+
+<div class="project-card">
+
+<img src="project1.png" alt="BØSS ENTERPRISE Project">
+
+<div class="project-card-content">
+
+<h3>Website Project</h3>
+
+<p>
+A professional digital project created by BØSS ENTERPRISE.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="project-card">
+
+<img src="boss-enterprise.jpg" alt="BØSS ENTERPRISE">
+
+<div class="project-card-content">
+
+<h3>Brand Identity</h3>
+
+<p>
+Our brand identity combines technology, creativity and professionalism.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+FEATURED
+========================= -->
+
+<section class="featured reveal" id="featured">
+
+<div class="container">
+
+<h2 class="section-title">🔥 Featured Products</h2>
+
+<div class="featured-grid">
+
+<div class="featured-card">
+<img src="iphone-11.jpg" alt="iPhone 11">
+<h3>iPhone 11</h3>
+<p class="price">💬 Contact Us for Price</p>
+</div>
+
+<div class="featured-card">
+<img src="redmi-15c.jpg" alt="Redmi 15C">
+<h3>Redmi 15C</h3>
+<p class="price">💬 Contact Us for Price</p>
+</div>
+
+<div class="featured-card">
+<img src="ps.jpg" alt="PS5">
+<h3>PS5</h3>
+<p class="price">💬 Contact Us for Price</p>
+</div>
+
+<div class="featured-card">
+<img src="itel-s26-ultra.jpg" alt="Itel S26 Ultra">
+<h3>Itel S26 Ultra</h3>
+<p class="price">💬 Contact Us for Price</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+SHOP
+========================= -->
+
+<section class="shop reveal" id="shop">
+
+<div class="container">
+
+<h2 class="section-title">🛒 Our Shop</h2>
+
+<div class="shop-controls">
+
+<input
+type="text"
+id="productSearch"
+class="search-box"
+placeholder="🔍 Search products..."
+onkeyup="filterProducts()"
+>
+
+</div>
+
+
+<div class="category-buttons">
+
+<button class="category-btn active" onclick="setCategory('all',this)">
+All Products
+</button>
+
+<button class="category-btn" onclick="setCategory('phone',this)">
+📱 Phones
+</button>
+
+<button class="category-btn" onclick="setCategory('gaming',this)">
+🎮 Gaming
+</button>
+
+</div>
+
+
+<div class="product-grid" id="productGrid"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+QUICK ORDER
+========================= -->
+
+<section class="quick-order reveal" id="quick-order">
+
+<div class="container">
+
+<h2 class="section-title">📦 Quick Order</h2>
+
+<div class="quick-order-box">
+
+<input
+type="text"
+id="quickName"
+placeholder="Your Name"
+>
+
+<input
+type="tel"
+id="quickPhone"
+placeholder="Your Phone Number"
+>
+
+<input
+type="text"
+id="quickProduct"
+placeholder="Product You Want"
+>
+
+<textarea
+id="quickMessage"
+placeholder="Additional message (optional)"
+></textarea>
+
+<button
+class="quick-order-btn"
+onclick="quickOrder()"
+>
+Send Order to WhatsApp
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+OFFERS
+========================= -->
+
+<section class="offers reveal" id="offers">
+
+<div class="container">
+
+<h2 class="section-title">🎁 Special Offers</h2>
+
+<div class="offer-grid">
+
+<div class="offer-card">
+<div class="offer-icon">📱</div>
+<h3>Phone Deals</h3>
+<p>Contact us for available smartphones and current prices.</p>
+</div>
+
+<div class="offer-card">
+<div class="offer-icon">🎮</div>
+<h3>Gaming Deals</h3>
+<p>Ask about available PS4, PS5 and gaming products.</p>
+</div>
+
+<div class="offer-card">
+<div class="offer-icon">💻</div>
+<h3>Web Design</h3>
+<p>Get a professional website designed for your business.</p>
+</div>
+
+<div class="offer-card">
+<div class="offer-icon">🎨</div>
+<h3>Creative Design</h3>
+<p>Professional graphics and promotional designs for your brand.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+FAQ
+========================= -->
+
+<section class="faq reveal" id="faq">
+
+<div class="container">
+
+<h2 class="section-title">❓ Frequently Asked Questions</h2>
+
+<div class="faq-container">
+
+<div class="faq-item">
+
+<button class="faq-question" onclick="toggleFaq(this)">
+Do you sell phones?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Yes. We offer smartphones and other technology products.
+Contact us for current prices and availability.
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question" onclick="toggleFaq(this)">
+Do you sell PS4 and PS5?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Yes. PS4 and PS5 are among our gaming products.
+Contact us for availability and current prices.
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question" onclick="toggleFaq(this)">
+Do you design websites?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Yes. We create modern and responsive websites for businesses and individuals.
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question" onclick="toggleFaq(this)">
+How can I place an order?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+You can add products to the cart and use checkout,
+or use our Quick Order form.
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question" onclick="toggleFaq(this)">
+How do I contact BØSS ENTERPRISE?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+You can call us or send a WhatsApp message using the contact buttons.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+REVIEWS
+========================= -->
+
+<section class="reviews reveal" id="reviews">
+
+<div class="container">
+
+<h2 class="section-title">⭐ Customer Reviews</h2>
+
+<div class="review-grid">
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Kelvin Faleye</h3>
+<p>Excellent service and very professional.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Justice Ogbonda</h3>
+<p>Delivery right on time, efficient in service.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Onwusah Shammah</h3>
+<p>Fast delivery and good customer service.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Marunwene Ogbonda</h3>
+<p>I got what I ordered. I give them a 5 star.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Kingdom Ogbonda</h3>
+<p>The service was smooth from start to finish.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Kingsley</h3>
+<p>Good communication and excellent service.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mr. Bright Ohiaogu</h3>
+<p>I’m satisfied with my purchase. I recommend BØSS ENTERPRISE.</p>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<h3>Mrs. Jemimah Ogbonda</h3>
+<p>Nice company, I must say.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+CONTACT
+========================= -->
+
+<section class="contact reveal" id="contact">
+
+<div class="container">
+
+<h2 class="section-title">📞 Contact BØSS ENTERPRISE</h2>
+
+<div class="contact-box">
+
+<h3>Let's Work Together</h3>
+
+<p>
+For web design, phones, gaming products, graphics,
+business promotion or any other digital solution, contact us today.
+</p>
+
+<div class="contact-buttons">
+
+<a
+href="tel:09134941225"
+class="btn phone-btn"
+>
+📞 Call Us
+</a>
+
+<a
+href="https://api.whatsapp.com/send?phone=2349134941225&text=Hello%20B%C3%98SS%20ENTERPRISE,%20I%20would%20like%20to%20make%20an%20enquiry."
+class="btn whatsapp-btn"
+target="_blank"
+>
+💬 WhatsApp Us
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+CART BUTTON
+========================= -->
+
+<div class="cart-icon" onclick="openCart()">
+
+🛒
+
+<span class="cart-count" id="cartCount">
+0
+</span>
+
+</div>
+
+
+<!-- =========================
+WHATSAPP FLOAT
+========================= -->
+
+<a
+href="https://api.whatsapp.com/send?phone=2349134941225&text=Hello%20B%C3%98SS%20ENTERPRISE,%20I%20would%20like%20to%20make%20an%20enquiry."
+class="whatsapp-float"
+target="_blank"
+>
+💬
+</a>
+
+
+<!-- =========================
+BACK TO TOP
+========================= -->
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
+
+
+<!-- =========================
+PRODUCT MODAL
+========================= -->
+
+<div class="modal" id="productModal">
+
+<div class="modal-content">
+
+<span class="close-modal" onclick="closeProductModal()">×</span>
+
+<img id="modalImage" src="" alt="Product">
+
+<h2 id="modalName"></h2>
+
+<p id="modalDescription"></p>
+
+<p class="contact-price">
+💬 Contact Us for Price
+</p>
+
+<a
+id="modalWhatsapp"
+href="#"
+target="_blank"
+class="btn whatsapp-btn"
+>
+💬 Ask on WhatsApp
+</a>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+CART MODAL
+========================= -->
+
+<div class="modal" id="cartModal">
+
+<div class="modal-content">
+
+<span class="close-modal" onclick="closeCart()">×</span>
+
+<h2>🛒 Your Cart</h2>
+
+<div id="cartItems"></div>
+
+
+<div class="checkout-box" id="checkoutBox" style="display:none;">
+
+<h3>Customer Details</h3>
+
+<input
+type="text"
+id="checkoutName"
+placeholder="Full Name"
+>
+
+<input
+type="tel"
+id="checkoutPhone"
+placeholder="Phone Number"
+>
+
+<input
+type="text"
+id="checkoutAddress"
+placeholder="Delivery Address"
+>
+
+<textarea
+id="checkoutNote"
+placeholder="Additional note (optional)"
+></textarea>
+
+<div class="checkout-buttons">
+
+<button
+class="back-cart"
+onclick="hideCheckout()"
+>
+Back
+</button>
+
+<button
+class="confirm-order"
+onclick="confirmCheckout()"
+>
+Continue to WhatsApp
+</button>
+
+</div>
+
+</div>
+
+
+<div class="success-box" id="successBox">
+
+<div class="success-icon">✅</div>
+
+<h2>Order Ready!</h2>
+
+<p>
+Your order details have been prepared successfully.
+You will be taken to WhatsApp to complete your order with BØSS ENTERPRISE.
+</p>
+
+<button onclick="closeCart()">
+Continue
+</button>
+
+</div>
+
+
+<div class="cart-actions" id="cartActions">
+
+<button
+class="clear-cart"
+onclick="clearCart()"
+>
+Clear Cart
+</button>
+
+<button
+class="order-cart"
+onclick="showCheckout()"
+>
+Checkout
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
 <footer>
 
-  <p>
-    © <span id="year"></span>
-    <strong>BØSS ENTERPRISE</strong>.
-    All Rights Reserved.
-  </p>
+<p>
+© 2026 <strong>BØSS ENTERPRISE</strong>. All Rights Reserved.
+</p>
 
-  <p>Professional • Creative • Reliable</p>
+<p>
+Web Design Professional | Phone Store
+</p>
 
 </footer>
 
 
-<!-- WHATSAPP -->
-<a
-  class="whatsapp"
-  href="https://wa.me/2349134941225"
-  target="_blank"
-  aria-label="Chat on WhatsApp"
->
-  💬
-</a>
-
-
-<!-- BACK TO TOP -->
-<button id="topBtn">↑</button>
-
-
 <script>
 
-  /* MOBILE MENU */
+/* =========================
+   PRODUCTS
+========================= */
 
-  const menuBtn = document.getElementById("menuBtn");
-  const navLinks = document.getElementById("navLinks");
+const products={
 
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
+iphone11:{
+name:"iPhone 11",
+price:null,
+image:"iphone-11.jpg",
+category:"phone",
+description:"iPhone 11 available from BØSS ENTERPRISE. Contact us for the current price and availability."
+},
 
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  });
+redmi15c:{
+name:"Redmi 15C",
+price:null,
+image:"redmi-15c.jpg",
+category:"phone",
+description:"Redmi 15C available from BØSS ENTERPRISE. Contact us for the current price and availability."
+},
 
+redmia7pro:{
+name:"Redmi A7 Pro",
+price:null,
+image:"redmi-a7-pro.jpg",
+category:"phone",
+description:"Redmi A7 Pro available from BØSS ENTERPRISE. Contact us for the current price and availability."
+},
 
-  /* DARK MODE */
+itels26ultra:{
+name:"Itel S26 Ultra",
+price:null,
+image:"itel-s26-ultra.jpg",
+category:"phone",
+description:"Itel S26 Ultra available from BØSS ENTERPRISE. Contact us for the current price and availability."
+},
 
-  const themeBtn = document.getElementById("themeBtn");
+ps4:{
+name:"PS4",
+price:null,
+image:"ps.jpg",
+category:"gaming",
+description:"PlayStation 4 available from BØSS ENTERPRISE. Contact us for the current price and availability."
+},
 
-  themeBtn.addEventListener("click", () => {
+ps5:{
+name:"PS5",
+price:null,
+image:"ps.jpg",
+category:"gaming",
+description:"PlayStation 5 available from BØSS ENTERPRISE. Contact us for the current price and availability."
+}
 
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      themeBtn.textContent = "☀️";
-      localStorage.setItem("theme", "dark");
-    } else {
-      themeBtn.textContent = "🌙";
-      localStorage.setItem("theme", "light");
-    }
-
-  });
-
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    themeBtn.textContent = "☀️";
-  }
-
-
-  /* BACK TO TOP */
-
-  const topBtn = document.getElementById("topBtn");
-
-  window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 500) {
-      topBtn.style.display = "block";
-    } else {
-      topBtn.style.display = "none";
-    }
-
-  });
-
-  topBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
+};
 
 
-  /* SCROLL ANIMATIONS */
+let cart={};
 
-  const reveals = document.querySelectorAll(".reveal");
-
-  const revealOnScroll = () => {
-
-    reveals.forEach(element => {
-
-      const windowHeight = window.innerHeight;
-      const elementTop = element.getBoundingClientRect().top;
-
-      if (elementTop < windowHeight - 80) {
-        element.classList.add("show");
-      }
-
-    });
-
-  };
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
+let currentCategory="all";
 
 
-  /* CONTACT FORM */
+/* =========================
+   MOBILE MENU
+========================= */
 
-  function sendMessage(event) {
+function toggleMenu(){
 
-    event.preventDefault();
+document.getElementById("navMenu").classList.toggle("active");
 
-    const name = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
+}
 
-    const whatsappMessage =
-      "Hello BØSS ENTERPRISE.%0A%0A" +
-      "My name is " + encodeURIComponent(name) +
-      ".%0A%0A" +
-      encodeURIComponent(message);
+document.querySelectorAll("#navMenu a").forEach(function(link){
 
-    window.open(
-      "https://wa.me/2349134941225?text=" + whatsappMessage,
-      "_blank"
-    );
+link.addEventListener("click",function(){
 
-  }
+document.getElementById("navMenu").classList.remove("active");
+
+});
+
+});
 
 
-  /* YEAR */
+/* =========================
+   DISPLAY PRODUCTS
+========================= */
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+function displayProducts(){
+
+let grid=document.getElementById("productGrid");
+
+let search=document
+.getElementById("productSearch")
+.value
+.toLowerCase();
+
+grid.innerHTML="";
+
+Object.keys(products).forEach(function(id){
+
+let product=products[id];
+
+let matchesSearch=
+product.name.toLowerCase().includes(search);
+
+let matchesCategory=
+currentCategory==="all" ||
+product.category===currentCategory;
+
+if(matchesSearch && matchesCategory){
+
+let card=document.createElement("div");
+
+card.className="product-card";
+
+card.innerHTML=`
+
+<img src="${product.image}" alt="${product.name}">
+
+<h3>${product.name}</h3>
+
+<p>${product.description}</p>
+
+<div class="contact-price">
+💬 Contact Us for Price
+</div>
+
+<div class="product-buttons">
+
+<button
+class="details-btn"
+onclick="showProduct('${id}')"
+>
+View Details
+</button>
+
+<button
+class="add-btn"
+onclick="addToCart('${id}')"
+>
+Add to Cart
+</button>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+}
+
+});
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function filterProducts(){
+
+displayProducts();
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function setCategory(category,button){
+
+currentCategory=category;
+
+document
+.querySelectorAll(".category-btn")
+.forEach(function(btn){
+
+btn.classList.remove("active");
+
+});
+
+button.classList.add("active");
+
+displayProducts();
+
+}
+
+
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
+function showProduct(id){
+
+let product=products[id];
+
+document.getElementById("modalImage").src=product.image;
+
+document.getElementById("modalName").textContent=product.name;
+
+document.getElementById("modalDescription").textContent=
+product.description;
+
+let message=
+"Hello BØSS ENTERPRISE, I would like to enquire about "+product.name+".";
+
+document.getElementById("modalWhatsapp").href=
+"https://api.whatsapp.com/send?phone=2349134941225&text="+
+encodeURIComponent(message);
+
+document.getElementById("productModal").style.display="flex";
+
+}
+
+function closeProductModal(){
+
+document.getElementById("productModal").style.display="none";
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function addToCart(id){
+
+if(cart[id]){
+cart[id]++;
+}else{
+cart[id]=1;
+}
+
+updateCart();
+
+alert(products[id].name+" added to your cart.");
+
+}
+
+
+function updateCart(){
+
+let count=0;
+
+Object.values(cart).forEach(function(quantity){
+
+count+=quantity;
+
+});
+
+document.getElementById("cartCount").textContent=count;
+
+displayCart();
+
+}
+
+
+function displayCart(){
+
+let container=document.getElementById("cartItems");
+
+container.innerHTML="";
+
+if(Object.keys(cart).length===0){
+
+container.innerHTML=
+"<p style='color:#bbb;margin-top:20px;'>Your cart is empty.</p>";
+
+return;
+
+}
+
+Object.keys(cart).forEach(function(id){
+
+let product=products[id];
+
+let item=document.createElement("div");
+
+item.className="cart-item";
+
+item.innerHTML=`
+
+<img src="${product.image}" alt="${product.name}">
+
+<div class="cart-item-info">
+
+<h4>${product.name}</h4>
+
+<p style="color:#00ff88;">
+💬 Contact Us for Price
+</p>
+
+<div class="cart-controls">
+
+<button
+class="qty-btn"
+onclick="changeQuantity('${id}',-1)"
+>
+−
+</button>
+
+<span>${cart[id]}</span>
+
+<button
+class="qty-btn"
+onclick="changeQuantity('${id}',1)"
+>
++
+</button>
+
+<button
+class="remove-btn"
+onclick="removeFromCart('${id}')"
+>
+Remove
+</button>
+
+</div>
+
+</div>
+
+`;
+
+container.appendChild(item);
+
+});
+
+}
+
+
+function changeQuantity(id,change){
+
+cart[id]+=change;
+
+if(cart[id]<=0){
+
+delete cart[id];
+
+}
+
+updateCart();
+
+}
+
+
+function removeFromCart(id){
+
+delete cart[id];
+
+updateCart();
+
+}
+
+
+function clearCart(){
+
+cart={};
+
+updateCart();
+
+}
+
+
+/* =========================
+   OPEN CART
+========================= */
+
+function openCart(){
+
+document.getElementById("cartModal").style.display="flex";
+
+document.getElementById("checkoutBox").style.display="none";
+
+document.getElementById("successBox").style.display="none";
+
+document.getElementById("cartActions").style.display="flex";
+
+displayCart();
+
+}
+
+function closeCart(){
+
+document.getElementById("cartModal").style.display="none";
+
+}
+
+
+function showCheckout(){
+
+if(Object.keys(cart).length===0){
+
+alert("Your cart is empty.");
+
+return;
+
+}
+
+document.getElementById("cartActions").style.display="none";
+
+document.getElementById("checkoutBox").style.display="block";
+
+}
+
+function hideCheckout(){
+
+document.getElementById("checkoutBox").style.display="none";
+
+document.getElementById("cartActions").style.display="flex";
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function confirmCheckout(){
+
+let name=document
+.getElementById("checkoutName")
+.value
+.trim();
+
+let phone=document
+.getElementById("checkoutPhone")
+.value
+.trim();
+
+let address=document
+.getElementById("checkoutAddress")
+.value
+.trim();
+
+let note=document
+.getElementById("checkoutNote")
+.value
+.trim();
+
+
+if(!name){
+
+alert("Please enter your full name.");
+
+return;
+
+}
+
+if(!phone){
+
+alert("Please enter your phone number.");
+
+return;
+
+}
+
+if(!address){
+
+alert("Please enter your delivery address.");
+
+return;
+
+}
+
+
+let message=
+"Hello BØSS ENTERPRISE,%0A%0A"+
+"*NEW ORDER*%0A%0A"+
+"Customer Name: "+encodeURIComponent(name)+
+"%0APhone Number: "+encodeURIComponent(phone)+
+"%0ADelivery Address: "+encodeURIComponent(address)+
+"%0A%0A"+
+"*ORDER ITEMS*%0A%0A";
+
+
+Object.keys(cart).forEach(function(id){
+
+let product=products[id];
+
+message+=
+"• "+
+encodeURIComponent(product.name)+
+" × "+
+cart[id]+
+"%0A";
+
+});
+
+
+message+=
+"%0AAdditional Note: "+
+encodeURIComponent(note || "None")+
+"%0A%0APlease confirm availability and the current prices. Thank you.";
+
+
+document.getElementById("checkoutBox").style.display="none";
+
+document.getElementById("cartActions").style.display="none";
+
+document.getElementById("successBox").style.display="block";
+
+
+setTimeout(function(){
+
+window.location.href=
+"https://api.whatsapp.com/send?phone=2349134941225&text="+
+message;
+
+},1000);
+
+}
+
+
+/* =========================
+   QUICK ORDER
+========================= */
+
+function quickOrder(){
+
+let name=document
+.getElementById("quickName")
+.value
+.trim();
+
+let phone=document
+.getElementById("quickPhone")
+.value
+.trim();
+
+let product=document
+.getElementById("quickProduct")
+.value
+.trim();
+
+let message=document
+.getElementById("quickMessage")
+.value
+.trim();
+
+
+if(!name){
+
+alert("Please enter your name.");
+
+return;
+
+}
+
+if(!phone){
+
+alert("Please enter your phone number.");
+
+return;
+
+}
+
+if(!product){
+
+alert("Please enter the product you want.");
+
+return;
+
+}
+
+
+let whatsappMessage=
+"Hello BØSS ENTERPRISE,%0A%0A"+
+"*QUICK ORDER*%0A%0A"+
+"Customer Name: "+
+encodeURIComponent(name)+
+"%0APhone Number: "+
+encodeURIComponent(phone)+
+"%0AProduct: "+
+encodeURIComponent(product)+
+"%0AMessage: "+
+encodeURIComponent(message || "None")+
+"%0A%0APlease confirm availability and the current price. Thank you.";
+
+
+window.location.href=
+"https://api.whatsapp.com/send?phone=2349134941225&text="+
+whatsappMessage;
+
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+function toggleFaq(button){
+
+let item=button.parentElement;
+
+item.classList.toggle("active");
+
+let span=button.querySelector("span");
+
+if(item.classList.contains("active")){
+
+span.textContent="−";
+
+}else{
+
+span.textContent="+";
+
+}
+
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+function revealOnScroll(){
+
+let reveals=document.querySelectorAll(".reveal");
+
+reveals.forEach(function(element){
+
+let windowHeight=window.innerHeight;
+
+let elementTop=
+element.getBoundingClientRect().top;
+
+if(elementTop<
+windowHeight-100){
+
+element.classList.add("active");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll",revealOnScroll);
+
+revealOnScroll();
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+window.addEventListener("scroll",function(){
+
+let button=document.getElementById("backTop");
+
+if(window.scrollY>500){
+
+button.style.display="block";
+
+}else{
+
+button.style.display="none";
+
+}
+
+});
+
+
+/* =========================
+   CLOSE MODALS WHEN OUTSIDE
+========================= */
+
+window.addEventListener("click",function(event){
+
+let productModal=
+document.getElementById("productModal");
+
+let cartModal=
+document.getElementById("cartModal");
+
+if(event.target===productModal){
+
+productModal.style.display="none";
+
+}
+
+if(event.target===cartModal){
+
+cartModal.style.display="none";
+
+}
+
+});
+
+
+/* =========================
+   START
+========================= */
+
+displayProducts();
+
+updateCart();
 
 </script>
 
